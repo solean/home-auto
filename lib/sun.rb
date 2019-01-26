@@ -9,7 +9,7 @@ class Sun
     @longitude = longitude
   end
 
-  def get_sunset_data(date='today')
+  def get_sunset_data(date = 'today')
     url = "#{@base_url}?lat=#{@latitude}&lng=#{@longitude}&date=#{date}"
     response = HTTParty.get(url)
     return nil if !response || !response.body
