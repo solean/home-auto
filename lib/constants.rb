@@ -1,4 +1,4 @@
-
+# Constants
 class Constants
   attr_reader :latitude,
               :longitude,

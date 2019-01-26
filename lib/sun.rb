@@ -1,6 +1,7 @@
 require 'httparty'
 require 'json'
 
+# Wrapper for sunrise/sunset api
 class Sun
   def initialize(latitude, longitude)
     @base_url = 'https://api.sunrise-sunset.org/json'
@@ -13,13 +14,13 @@ class Sun
     response = HTTParty.get(url)
     return nil if !response || !response.body
     parsed = JSON.parse(response.body)
-    return parsed['results']
+    parsed['results']
   end
 
-  def get_sunset_time
+  def sunset_time
     data = get_sunset_data
     sunset_time_str = data['sunset']
-    return nil if !sunset_time_str
+    return nil unless sunset_time_str
 
     time = DateTime.strptime(sunset_time_str, '%H:%M:%S %p').to_time
     time.localtime

@@ -1,6 +1,7 @@
 require 'httparty'
 require 'json'
 
+# Wrapper for DarkSky weather api
 class DarkSky
 
   def initialize(api_token)
@@ -13,7 +14,7 @@ class DarkSky
     response = HTTParty.get(url)
     return nil if !response || !response.body
     parsed = JSON.parse(response.body)
-    return parsed['currently']
+    parsed['currently']
   end
 
 end
